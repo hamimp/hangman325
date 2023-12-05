@@ -1,3 +1,5 @@
+import random
 word_list = ["peach", "mango", "orange", "blackberry", "guava"]
 
-print(word_list)
+word = random.choice(word_list)
+print(word)
