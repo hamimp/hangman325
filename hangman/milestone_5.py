@@ -1,6 +1,6 @@
 import random
 class Hangman:
-    def __init__(self, word_list, num_lives = 5 ):
+    def __init__(self, word_list, num_lives):
         self.word = random.choice(word_list)
         self.word_guessed = ["_"] * len(self.word)
         self.num_letters = set(self.word)
@@ -61,10 +61,14 @@ class Hangman:
             return True
         else:
             return None
+    
+    def play_game(self):
+        self.ask_for_input()
 
 
 
 if __name__ == '__main__':
     word_list = ["peach", "mango", "orange", "blackberry", "guava"]
-    hangnman_1 = Hangman(word_list)
-    hangnman_1.ask_for_input()
+    num_lives = 6
+    hangnman_1 = Hangman(word_list, num_lives)
+    hangnman_1.play_game()
