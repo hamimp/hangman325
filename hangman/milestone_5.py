@@ -1,6 +1,38 @@
 import random
 class Hangman:
+    """
+    A class to represent a game of Hangman.
+
+    Attributes
+    ----------
+    word : (str) randomly chosen word from a word list
+
+    word_guessed : (list) list of underscores representing the word to guess
+
+    num_letters : (set) a set of letters present in the word
+
+    num_lives : (int) the number of lives the player has
+
+    word_list : (list) a list of words to choose the word from
+
+    list_of_guesses : (list) a list of letters guessed by the player
+
+    Methods
+    -------
+    check_guess(guess): Checks if the guessed letter is in the word.
+    ask_for_input(): Asks the player for their guess and checks it.
+    """
+
+
     def __init__(self, word_list, num_lives):
+        """
+            Constructs all the necessary attributes for the hangman object.
+
+            Parameters
+            ----------
+            word_list : (list) a list of words to choose from
+            num_lives : (int) the number of lives the player has
+        """
         self.word = random.choice(word_list)
         self.word_guessed = ["_"] * len(self.word)
         self.num_letters = set(self.word)
@@ -9,6 +41,14 @@ class Hangman:
         self.list_of_guesses = []
     
     def check_guess(self, guess):
+        """
+            Checks if the guessed letter is in the word 
+            and updates the game state accordingly.
+
+            Parameters
+            ----------
+            guess : (str) the letter guessed by the player
+        """
 
         guess = guess.lower()
 
@@ -29,6 +69,10 @@ class Hangman:
 
 
     def ask_for_input(self):
+        """
+            Asks the player for their guess and checks it.
+
+        """
 
         print('For the following word: '+' '.join(self.word_guessed) )
         guess = input("Please enter a single alphabetical character: ")
@@ -46,10 +90,12 @@ class Hangman:
             self.check_guess(guess)
         self.list_of_guesses.append(guess)
 
-    
 
 
 def play_game():
+    """
+        Starts a game of Hangman with a list of words and a number of lives.
+    """
     word_list = ["peach", "mango", "orange", "blackberry", "guava"]
     num_lives = 5
     hangnman_game = Hangman(word_list, num_lives)
@@ -65,7 +111,6 @@ def play_game():
             break
         else:
             continue
-
 
 
 if __name__ == '__main__':
